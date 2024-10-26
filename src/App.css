@@ -1,9 +1,15 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 body{
-  background-color: pink;
+  background-color: aqua;
   scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
+
+
 
 
 .form-container {
@@ -140,9 +146,4 @@ body{
   margin-bottom: 1px;
 }
 
-nav {
-  display: fixed;
-  background-color: rgb(198, 17, 47) !important;
-  padding: 10px 20px;
-  box-sizing: border-box;
-}
+

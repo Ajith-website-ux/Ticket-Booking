@@ -2,13 +2,14 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "./logo.png";
 import { CartContext } from "./Carousel"; // Ensure CartContext is correctly defined and imported
 import { useContext } from "react";
+import './button.css'
 
 export const NavigationBar = ({ handleClick }) => {
   const { count } = useContext(CartContext); // Accessing cart count from context
   const navigate = useNavigate();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light h4" style={{backgroundColor:"aqua"}}>
       <Link className="navbar-brand" to="/">
         <img src={logo} alt="Logo" className="navbar-logo" style={{ width: "100px" }} />
       </Link>
