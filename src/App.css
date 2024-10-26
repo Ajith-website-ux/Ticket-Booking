@@ -142,7 +142,7 @@ body{
 
 nav {
   display: fixed;
-  background-color: pink !important;
+  background-color: rgb(198, 17, 47) !important;
   padding: 10px 20px;
   box-sizing: border-box;
 }
