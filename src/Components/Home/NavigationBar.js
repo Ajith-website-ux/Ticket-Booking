@@ -30,17 +30,17 @@ export const NavigationBar = ({ handleClick }) => {
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/about">
-              About
+              For You
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/services">
-              Services
+              Offers
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/features">
-              Features
+              Contact Us
             </NavLink>
           </li>
         </ul>

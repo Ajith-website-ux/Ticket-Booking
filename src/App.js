@@ -7,6 +7,7 @@ import { NavigationBar } from './Components/Home/NavigationBar';
 import { CartProvider } from './Components/Home/Carousel'; // Changed to CartProvider
 import CartList from './Components/Home/CartList'; // Changed import
 import { useState } from 'react';
+import { FooterArea } from './Components/Aboutus/footer';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // State to track authentication
@@ -26,9 +27,10 @@ function App() {
           />
           <Route path="/demo" element={<Demo />} />
           <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/login" element={<Navigate to="/" />} /> {/* Redirect to login */}
+          <Route path="/login" element={<Navigate to="/" />} /> 
           <Route path="/CartView/:id" element={<CartList />} />
           <Route path="/CartDetails" element={<CartList />} />
+          <Route path='/about' element={<FooterArea />} />
         </Routes>
       </Router>
     </CartProvider>
