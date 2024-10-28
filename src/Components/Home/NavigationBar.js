@@ -1,15 +1,20 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "./logo.png";
-import { CartContext } from "./Carousel"; // Ensure CartContext is correctly defined and imported
+import { CartContext } from "./Carousel"; 
 import { useContext } from "react";
-import './button.css'
+import './button.css';
 
-export const NavigationBar = ({ handleClick }) => {
-  const { count } = useContext(CartContext); // Accessing cart count from context
+export const NavigationBar = () => {
+  const { count, logout } = useContext(CartContext); 
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    logout(); // Call the logout function
+    navigate('/'); // Redirect to the home page after logout
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light h4" style={{backgroundColor:"aqua"}}>
+    <nav className="navbar navbar-expand-lg navbar-light h4" style={{ backgroundColor: "aqua" }}>
       <Link className="navbar-brand" to="/">
         <img src={logo} alt="Logo" className="navbar-logo" style={{ width: "100px" }} />
       </Link>
@@ -61,6 +66,11 @@ export const NavigationBar = ({ handleClick }) => {
             >
               Login
             </NavLink>
+          </li>
+          <li className="nav-item">
+            <button onClick={handleLogout} className="btn btn-danger me-2 px-4 py-2 text-light fs-5 fw-5">
+              Logout
+            </button>
           </li>
         </ul>
       </div>

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { CartContext } from './Carousel'; // Ensure this points to your CartContext
+import { CartContext } from './Carousel';
 
 const CartList = () => {
-  const { cartItems, removeFromCart } = useContext(CartContext); // Destructure removeFromCart
+  const { cartItems, removeFromCart } = useContext(CartContext); 
 
   return (
     <div className="container">
@@ -17,7 +17,7 @@ const CartList = () => {
                   <p className="card-text">${item.ticketprice}</p>
                   <button 
                     className="btn btn-danger" 
-                    onClick={() => removeFromCart(item)} // Call removeFromCart on click
+                    onClick={() => removeFromCart(item)} 
                   >
                     Remove
                   </button>

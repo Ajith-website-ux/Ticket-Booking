@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 
-export const LoginUser = ({ onLogin }) => { // Accept onLogin as a prop
+export const LoginUser = ({ onLogin }) => { 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Check credentials
+    
     if (email === "test@gmail.com" && password === "ajux1234") {
       alert("Login successful!");
-      onLogin(); // Call the onLogin function
-      navigate("/demo"); // Redirect to the Demo page
+      onLogin();
+      navigate("/demo"); 
     } else {
       setError("Invalid email or password");
     }

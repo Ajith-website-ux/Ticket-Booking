@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect, useContext } from 'react';
-import { CartContext } from './Carousel'; // Import CartContext
+import { CartContext } from './Carousel';
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
-  const { addToCart } = useContext(CartContext); // Destructure addToCart from CartContext
+  const { addToCart } = useContext(CartContext); 
 
-  // Fetch product details
+
   useEffect(() => {
     fetch(`https://backend-crud-one.vercel.app/product/${id}`)
       .then(response => response.json())
@@ -19,11 +19,12 @@ const ProductDetails = () => {
       });
   }, [id]);
 
-  // Add to Cart handler
+
   const handleAddToCart = () => {
-    addToCart(product); // Use addToCart from context
+    addToCart(product); 
     alert(`${product.name} added to cart!`);
   };
+
 
   return (
     <>
@@ -51,7 +52,7 @@ const ProductDetails = () => {
                     <p><b>Budget:</b> {product.budget}</p>
                     <p><b>Description :</b> {product.description}</p>
                     <p><b>Ticket Price:</b> ${product.ticketprice}</p>
-                    <button className="btn btn-danger" >Book a Ticket <i className="bi bi-ticket-detailed fs-5"></i></button> <br />
+                    <button className="btn btn-danger"  >Book a Ticket <i className="bi bi-ticket-detailed fs-5"></i></button> <br />
                     <button className="btn btn-danger mt-3" onClick={handleAddToCart}>
                       Add to Cart <i className="bi bi-cart2 fs-5"></i>
                     </button>

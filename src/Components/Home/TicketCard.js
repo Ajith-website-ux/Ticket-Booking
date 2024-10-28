@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'; 
 import './button.css';
 import { Link } from 'react-router-dom';
-import { CartContext } from './Carousel'; // Make sure this imports the correct CartContext
+import { CartContext } from './Carousel'; 
 
 const Demo = () => {
   const [data, setData] = useState([]);
-  const [error, setError] = useState(null); // Add error state
-  const { addToCart } = useContext(CartContext); // Destructure addToCart from CartContext
+  const [error, setError] = useState(null); 
+  const { addToCart } = useContext(CartContext); 
 
   useEffect(() => {
     fetch(`https://backend-crud-one.vercel.app/product/`)
@@ -14,14 +14,14 @@ const Demo = () => {
       .then((data) => setData(data))
       .catch((error) => {
         console.error('Error:', error);
-        setError('Failed to load products'); // Set error message
+        setError('Failed to load products'); 
       });
   }, []);
 
   return (
     <>
       <div className='container'>
-        {error && <p className="text-danger text-center">{error}</p>} {/* Display error message if there's an error */}
+        {error && <p className="text-danger text-center">{error}</p>}
         <div className="row text-center">
           {data.map((item) => (
             <div className="col-md-3 col-lg-3 col-sm-6 my-3" key={item._id}>

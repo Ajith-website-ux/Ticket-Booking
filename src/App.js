@@ -4,16 +4,16 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import ProductDetails from './Components/Home/ViewImage';
 import { LoginUser } from './Components/Home/Login';
 import { NavigationBar } from './Components/Home/NavigationBar';
-import { CartProvider } from './Components/Home/Carousel'; // Changed to CartProvider
-import CartList from './Components/Home/CartList'; // Changed import
+import { CartProvider } from './Components/Home/Carousel'; 
+import CartList from './Components/Home/CartList';
 import { useState } from 'react';
 import { FooterArea } from './Components/Aboutus/footer';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // State to track authentication
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
 
   const handleLogin = () => {
-    setIsAuthenticated(true); // Set authentication state to true on login
+    setIsAuthenticated(true);
   };
 
   return (
@@ -24,7 +24,7 @@ function App() {
           <Route
             path="/"
             element={isAuthenticated ? <Navigate to="/demo" /> : <LoginUser onLogin={handleLogin} />}
-          />
+            />
           <Route path="/demo" element={<Demo />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/login" element={<Navigate to="/" />} /> 
