@@ -4,7 +4,7 @@ import { CartContext } from "./Carousel";
 import { useContext } from "react";
 import './button.css';
 
-export const NavigationBar = () => {
+export const NavigationBar = ({ onLogout }) => {
   const { count, logout } = useContext(CartContext); 
   const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ export const NavigationBar = () => {
         </ul>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <button className="btn btn-dark px-4 py-2 text-light fs-5 fw-5 me-3" onClick={() => navigate('/CartDetails')}>
+            <button className="btn btn-dark px-4 py-2 text-light fs-5 fw-5 me-3 NavIcon" onClick={() => navigate('/CartDetails')}>
               <i className="bi bi-cart-plus">
                 <span className="bg-danger mb-2 me-1 px-2" style={{ borderRadius: "50%" }}>
                   {count}
@@ -68,7 +68,7 @@ export const NavigationBar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <button onClick={handleLogout} className="btn btn-danger me-2 px-4 py-2 text-light fs-5 fw-5">
+            <button onClick={onLogout} className="btn btn-danger me-2 px-4 py-2 text-light fs-5 fw-5">
               Logout
             </button>
           </li>

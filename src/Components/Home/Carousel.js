@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,38 +10,55 @@ export const CartProvider = ({ children }) => {
     return storedCart ? JSON.parse(storedCart) : [];
   });
 
-  const [count, setCount] = useState(cartItems.length);
+  const [count, setCount] = useState(() => {
+    // Initialize count based on items in cartItems when the component mounts
+    const storedCart = localStorage.getItem('cartItems');
+    const parsedCart = storedCart ? JSON.parse(storedCart) : [];
+    return parsedCart.reduce((total, item) => total + item.quantity, 0);
+  });
+
+  // Update count whenever cartItems changes
+  useEffect(() => {
+    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+    setCount(totalItems);
+  }, [cartItems]);
 
   const addToCart = (item) => {
-    const itemExists = cartItems.some(cartItem => cartItem._id === item._id);
+    const itemExists = cartItems.find(cartItem => cartItem._id === item._id);
     if (itemExists) {
       toast.warn("Already in the cart!");
     } else {
-      const newCart = [...cartItems, item];
+      const newCart = [...cartItems, { ...item, quantity: 1 }];
       setCartItems(newCart);
-      setCount(newCart.length);
       localStorage.setItem('cartItems', JSON.stringify(newCart));
       toast.success(`${item.name} added to the cart!`);
     }
   };
 
+  const incrementQuantity = (id) => {
+    const updatedCart = cartItems.map(item =>
+      item._id === id ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    setCartItems(updatedCart);
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+  };
+
+  const decrementQuantity = (id) => {
+    const updatedCart = cartItems.map(item =>
+      item._id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+    );
+    setCartItems(updatedCart);
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+  };
+
   const removeFromCart = (itemToRemove) => {
     const newCart = cartItems.filter(item => item._id !== itemToRemove._id);
     setCartItems(newCart);
-    setCount(newCart.length);
     localStorage.setItem('cartItems', JSON.stringify(newCart));
   };
 
-  const logout = () => {
-    localStorage.removeItem('cartItems'); // Clear cart items
-    localStorage.removeItem('isAuthenticated'); // Clear authentication status
-    setCartItems([]); // Reset cart items in state
-    setCount(0); // Reset count
-    toast.info("Logged out successfully!"); // Optional toast notification
-  };
-
   return (
-    <CartContext.Provider value={{ cartItems, count, addToCart, removeFromCart, logout }}>
+    <CartContext.Provider value={{ count, cartItems, addToCart, incrementQuantity, decrementQuantity, removeFromCart }}>
       {children}
       <ToastContainer />
     </CartContext.Provider>

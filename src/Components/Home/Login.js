@@ -1,3 +1,8 @@
+
+
+
+
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 
@@ -10,10 +15,10 @@ export const LoginUser = ({ onLogin }) => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    
     if (email === "test@gmail.com" && password === "ajux1234") {
       alert("Login successful!");
       onLogin();
+      localStorage.setItem('isAuthenticated', 'true');
       navigate("/demo"); 
     } else {
       setError("Invalid email or password");
@@ -21,7 +26,8 @@ export const LoginUser = ({ onLogin }) => {
   };
 
   return (
-    <div className="container">
+    <>
+     <div className="container">
       <div className="row mt-5">
         <div className="col"></div>
         <div className="col">
@@ -96,5 +102,6 @@ export const LoginUser = ({ onLogin }) => {
         <div className="col"></div>
       </div>
     </div>
+    </>
   );
 };
