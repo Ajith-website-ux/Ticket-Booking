@@ -77,3 +77,4 @@ export const NavigationBar = ({ onLogout }) => {
     </nav>
   );
 };
+
