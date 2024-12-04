@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from "./logo.png";
+import logo from "../Logo/Logo.png";
 import { CartContext } from "./Carousel"; 
 import { useContext } from "react";
 import './button.css';
@@ -14,7 +14,10 @@ export const NavigationBar = ({ onLogout }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light h4" style={{ backgroundColor: "aqua" }}>
+    <>
+    <div className="container-fluid NavBarBG">
+    <div className="container">
+    <nav className="navbar navbar-expand-lg navbar-light text-light h4" >
       <Link className="navbar-brand" to="/">
         <img src={logo} alt="Logo" className="navbar-logo" style={{ width: "100px" }} />
       </Link>
@@ -29,29 +32,29 @@ export const NavigationBar = ({ onLogout }) => {
       <div className="collapse navbar-collapse" id="collapsibleNavbar">
         <ul className="navbar-nav mx-auto">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/">
+            <NavLink className="nav-link text-light" to="/">
               Movies
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/about">
+            <NavLink className="nav-link text-light" to="/about">
               For You
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/services">
-              Offers
+            <NavLink className="nav-link text-light" to="/services">
+              Services
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/features">
+            <NavLink className="nav-link text-light" to="/features">
               Contact Us
             </NavLink>
           </li>
         </ul>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <button className="btn btn-dark px-4 py-2 text-light fs-5 fw-5 me-3 NavIcon" onClick={() => navigate('/CartDetails')}>
+            <button className="btn btn-dark px-4 py-2 text-light fs-5 fw-5 me-3 NavIcon text-light" onClick={() => navigate('/CartDetails')}>
               <i className="bi bi-cart-plus">
                 <span className="bg-danger mb-2 me-1 px-2" style={{ borderRadius: "50%" }}>
                   {count}
@@ -75,6 +78,9 @@ export const NavigationBar = ({ onLogout }) => {
         </ul>
       </div>
     </nav>
+    </div>
+    </div>
+    </>
   );
 };
 

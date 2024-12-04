@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import './button.css';
 import { Link } from 'react-router-dom';
 import { CartContext } from './Carousel'; 
+import CarouselPage from '../CarouselWebPage/CarouselPage';
+
 
 const Demo = () => {
   const [data, setData] = useState([]);
@@ -21,6 +23,7 @@ const Demo = () => {
   return (
     <>
       <div className='container'>
+        <CarouselPage />
         {error && <p className="text-danger text-center">{error}</p>}
         <div className="row text-center">
           {data.map((item) => (

@@ -9,6 +9,8 @@ import CartList from './Components/Home/CartList';
 import { useState, useEffect } from 'react';
 import { FooterArea } from './Components/Aboutus/footer';
 import { AboutUs } from './Components/Aboutus/AboutUs';
+import { ContactUs } from './Components/Aboutus/ContactUs';
+import { Services } from './Components/Aboutus/Services';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -41,6 +43,8 @@ function App() {
           <Route path="/CartView/:id" element={<CartList />} />
           <Route path="/CartDetails" element={<CartList />} />
           <Route path='/about' element={<AboutUs />} />
+          <Route path='/services' element={<Services />} />
+          <Route path='/features' element={<ContactUs />} />
 
         </Routes>
         {isAuthenticated && <FooterArea />}
