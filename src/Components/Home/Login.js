@@ -25,7 +25,7 @@ export const LoginUser = ({ onLogin }) => {
     <>
       <div className="container">
         <div className="row mt-5">
-          <div className="col-lg form-container card" style={{ height: "79vh"}}>
+          <div className="col-lg form-container card" style={{ height: "auto"}}>
             <h3 style={{marginTop:"180px"}}>
               🎬 Ready for Showtime? Log in now to book your favorite movies,
               grab the best seats, and unlock exclusive deals! Your movie magic

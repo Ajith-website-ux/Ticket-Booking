@@ -28,7 +28,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      <div className="container text-white">
+      <div className="container text-dark">
         <div className="row mt-4">
           {error ? (
             <p>{error}</p>
